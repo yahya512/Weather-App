@@ -14,8 +14,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.weatherapp.databinding.FragmentSplashBinding
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SplashFragment : Fragment() {
     private var _binding: FragmentSplashBinding? = null
     private val binding
