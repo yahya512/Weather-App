@@ -17,7 +17,9 @@ import com.google.android.gms.location.Priority
 
 
 class SplashFragment : Fragment() {
-    lateinit var binding: FragmentSplashBinding
+    private var _binding: FragmentSplashBinding? = null
+    private val binding
+        get() = _binding!!
     private val fusedLocationClient by lazy {
         LocationServices.getFusedLocationProviderClient(requireContext())
     }
@@ -25,7 +27,7 @@ class SplashFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -71,12 +73,14 @@ class SplashFragment : Fragment() {
     @SuppressLint("MissingPermission")
     private fun getCurrentLocation() {
         fusedLocationClient.getCurrentLocation(
-            Priority.PRIORITY_HIGH_ACCURACY, null
+            Priority.PRIORITY_BALANCED_POWER_ACCURACY, null
         ).addOnSuccessListener { location ->
             if (location != null) {
                 val latitude = location.latitude
                 val longitude = location.longitude
                 navigateToHome(latitude.toFloat(), longitude.toFloat())
+            } else {
+                navigateToSearch()
             }
         }
     }
@@ -100,4 +104,8 @@ class SplashFragment : Fragment() {
         findNavController().navigate(action)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
