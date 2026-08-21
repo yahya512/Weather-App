@@ -1,0 +1,8 @@
+package com.example.weatherapp.home.data.model
+
+import com.google.gson.annotations.SerializedName
+
+data class ForecastDayDto(
+    @SerializedName("date") val date: String,
+    @SerializedName("day") val day: DayDto
+)
