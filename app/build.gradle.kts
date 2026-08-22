@@ -27,6 +27,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"https://api.weatherapi.com/v1/\""
+            )
+        }
         release {
             isMinifyEnabled = false
         }
