@@ -3,6 +3,7 @@ package com.example.weatherapp.di
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.weatherapp.BuildConfig
+import com.example.weatherapp.home.data.remote.API_KEY
 import com.example.weatherapp.home.data.remote.GetWeatherDetailsApi
 import com.example.weatherapp.home.data.repository.GetWeatherRepositoryImpl
 import com.example.weatherapp.home.domain.repository.GetWeatherDetailsRepository
@@ -43,12 +44,19 @@ class MyAppModule {
     @Singleton
     fun provideOkHttpClient(
         logging: HttpLoggingInterceptor,
-        chuker: ChuckerInterceptor
+        chuker: ChuckerInterceptor,
     ): OkHttpClient {
         val client =
             OkHttpClient.Builder()
                 .addInterceptor(logging)
                 .addInterceptor(chuker)
+                .addInterceptor { chain ->
+                    val key = chain.request()
+                        .newBuilder()
+                        .addHeader("key", API_KEY)
+                        .build()
+                    chain.proceed(key)
+                }
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .build()
