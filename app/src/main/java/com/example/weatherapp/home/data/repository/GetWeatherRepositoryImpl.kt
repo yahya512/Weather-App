@@ -1,5 +1,6 @@
 package com.example.weatherapp.home.data.repository
 
+import com.example.weatherapp.core.LocationLocalDataSource
 import com.example.weatherapp.home.data.mappers.GetWeatherResponseDomainMapper
 import com.example.weatherapp.home.data.remote.GetWeatherDetailsApi
 import com.example.weatherapp.home.data.remote.safeApiCall
@@ -8,13 +9,25 @@ import com.example.weatherapp.home.domain.model.GetWeatherDetailsDomainResponse
 import com.example.weatherapp.home.domain.repository.GetWeatherDetailsRepository
 import javax.inject.Inject
 
-class GetWeatherRepositoryImpl @Inject constructor(val apiResponse: GetWeatherDetailsApi) :
+class GetWeatherRepositoryImpl @Inject constructor(
+    val apiResponse: GetWeatherDetailsApi,
+    val sharedPreferences: LocationLocalDataSource
+) :
     GetWeatherDetailsRepository {
     override suspend fun getWeatherDetails(
-        latitudeAndLongitude: String, days: Int, hour: Int
+        latitudeAndLongitude: String?, days: Int, hour: Int
     ): ApiResultStatus<GetWeatherDetailsDomainResponse> {
+        var localLocation: String?
+        if (latitudeAndLongitude == null) {
+            localLocation =
+                "${sharedPreferences.getLatitude()}," + "${sharedPreferences.getLongitude()}"
+
+        } else {
+            localLocation = latitudeAndLongitude
+        }
+
         val response =
-            safeApiCall { apiResponse.getWeatherDetails(latitudeAndLongitude, days, hour) }
+            safeApiCall { apiResponse.getWeatherDetails(localLocation, days, hour) }
         return when (response) {
             is ApiResultStatus.Error -> {
                 ApiResultStatus.Error(response.errorMessage)
@@ -28,3 +41,4 @@ class GetWeatherRepositoryImpl @Inject constructor(val apiResponse: GetWeatherDe
         }
     }
 }
+

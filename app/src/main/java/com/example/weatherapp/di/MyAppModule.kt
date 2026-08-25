@@ -1,8 +1,10 @@
 package com.example.weatherapp.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.weatherapp.BuildConfig
+import com.example.weatherapp.core.LocationLocalDataSource
 import com.example.weatherapp.home.data.remote.API_KEY
 import com.example.weatherapp.home.data.remote.GetWeatherDetailsApi
 import com.example.weatherapp.home.data.repository.GetWeatherRepositoryImpl
@@ -93,7 +95,23 @@ object MyAppModule {
 
     // provide apiService for RepositoryImpl
     @Provides
-    fun provideGetWeatherDetailsApiForGetWeatherRepositoryImpl(apiService: GetWeatherDetailsApi): GetWeatherDetailsRepository {
-        return GetWeatherRepositoryImpl(apiService)
+    fun provideGetWeatherDetailsApiForGetWeatherRepositoryImpl(
+        apiService: GetWeatherDetailsApi,
+        sharedPreference: LocationLocalDataSource
+    ): GetWeatherDetailsRepository {
+        return GetWeatherRepositoryImpl(apiService, sharedPreference)
+    }
+
+    //provide SharedPreferences
+    @Provides
+    fun provideLocationLocalDataSource(sharedPreference: SharedPreferences): LocationLocalDataSource {
+        return LocationLocalDataSource(sharedPreference)
+    }
+
+    @Provides
+    fun provideSharedPref(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences(
+            "myPref", Context.MODE_PRIVATE
+        )
     }
 }

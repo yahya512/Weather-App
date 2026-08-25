@@ -11,10 +11,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.weatherapp.core.LocationLocalDataSource
 import com.example.weatherapp.databinding.FragmentSplashBinding
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SplashFragment : Fragment() {
@@ -24,6 +26,9 @@ class SplashFragment : Fragment() {
     private val fusedLocationClient by lazy {
         LocationServices.getFusedLocationProviderClient(requireContext())
     }
+    @Inject
+     lateinit var sharedPreferences : LocationLocalDataSource
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -77,9 +82,10 @@ class SplashFragment : Fragment() {
             Priority.PRIORITY_BALANCED_POWER_ACCURACY, null
         ).addOnSuccessListener { location ->
             if (location != null) {
-                val latitude = location.latitude
-                val longitude = location.longitude
-                navigateToHome(latitude.toFloat(), longitude.toFloat())
+                val latitude = location.latitude.toFloat()
+                val longitude = location.longitude.toFloat()
+                sharedPreferences.saveLocation(latitude, longitude)
+                navigateToHome(latitude, longitude)
             } else {
                 navigateToSearch()
             }
