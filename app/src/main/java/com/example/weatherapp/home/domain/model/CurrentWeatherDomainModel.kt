@@ -1,7 +1,7 @@
 package com.example.weatherapp.home.domain.model
 
 
-data class CurrentDomainModel(
+data class CurrentWeatherDomainModel(
     val lastUpdate: String,
     val tempC: Double,
     val feelsLike: Double,
