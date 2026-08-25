@@ -8,10 +8,10 @@ import java.io.IOException
 suspend fun safeApiCall(apiCall: suspend () -> GetWeatherDetailsDtoResponse): ApiResultStatus<GetWeatherDetailsDtoResponse> {
     return try {
         val result = apiCall()
-        if (result.error?.message != null) {
+        if (result.error?.message == null) {
             ApiResultStatus.Success(result)
         } else {
-            ApiResultStatus.Error(result.error?.message ?: "the Data Doesn't Received successfully")
+            ApiResultStatus.Error(result.error.message)
         }
     } catch (e: IOException) {
         ApiResultStatus.Error(e.message ?: "Connection Failed")

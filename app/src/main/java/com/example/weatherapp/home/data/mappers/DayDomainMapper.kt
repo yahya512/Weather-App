@@ -4,7 +4,7 @@ import com.example.weatherapp.home.data.model.DayDto
 import com.example.weatherapp.home.domain.model.DayDomainModel
 
 object DayDomainMapper {
-    fun mapRoDomain(data: DayDto): DayDomainModel {
+    fun mapToDomain(data: DayDto): DayDomainModel {
         return DayDomainModel(
             avgTempC = data.avgTempC,
             maxWindKph = data.maxWindKph,

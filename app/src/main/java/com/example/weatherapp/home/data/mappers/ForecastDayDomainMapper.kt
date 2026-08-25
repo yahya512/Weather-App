@@ -7,7 +7,7 @@ object ForecastDayDomainMapper {
     fun mapToDomain(data: ForecastDayDto): ForecastDayDomainModel {
         return ForecastDayDomainModel(
             date = data.date,
-            day = DayDomainMapper.mapRoDomain(data.day)
+            day = DayDomainMapper.mapToDomain(data.day)
         )
     }
 }
