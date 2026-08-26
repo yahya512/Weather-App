@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:background="@drawable/days_weather_shape">
+
+    <TextView
+        android:id="@+id/text_dayOfWeek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="17.1dp"
+        android:fontFamily="@font/roboto_medium"
+        android:paddingHorizontal="4dp"
+        android:text="@string/dayOfWeek"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_cloudIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:importantForAccessibility="no"
+        android:paddingHorizontal="4dp"
+        android:src="@drawable/cloud_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_dayOfWeek" />
+
+    <TextView
+        android:id="@+id/text_degreeDayNumber"
+        style="@style/weatherTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/roboto_medium"
+        android:paddingHorizontal="4dp"
+        android:text="@string/text_dayDegree"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_cloudIcon" />
+
+    <TextView
+        android:id="@+id/text_signDegree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/signDegree"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/text_degreeDayNumber"
+        app:layout_constraintTop_toBottomOf="@id/image_cloudIcon" />
+
+    <TextView
+        android:id="@+id/text_maxWindKph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/roboto_medium"
+        android:paddingHorizontal="4dp"
+        android:text="@string/text_dayWind"
+        android:textColor="@color/white"
+
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_degreeDayNumber"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/km_h"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_maxWindKph"
+        tools:ignore="SmallSp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
