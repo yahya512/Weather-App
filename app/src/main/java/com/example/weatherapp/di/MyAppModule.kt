@@ -10,6 +10,8 @@ import com.example.weatherapp.home.data.remote.GetWeatherDetailsApi
 import com.example.weatherapp.home.data.repository.GetWeatherRepositoryImpl
 import com.example.weatherapp.home.domain.repository.GetWeatherDetailsRepository
 import com.example.weatherapp.home.domain.usecase.GetWeatherDetailsUseCase
+import com.example.weatherapp.search.domain.repository.SearchRepository
+import com.example.weatherapp.search.domain.usecase.SearchByCityUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -113,5 +115,11 @@ object MyAppModule {
         return context.getSharedPreferences(
             "myPref", Context.MODE_PRIVATE
         )
+    }
+
+    // Provide Repository for SearchUseCase
+    @Provides
+    fun provideRepositoryForSearchUseCase(repository: SearchRepository): SearchByCityUseCase {
+        return SearchByCityUseCase(repository)
     }
 }
