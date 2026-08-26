@@ -1,6 +1,6 @@
 package com.example.weatherapp.home.presentation.model
 
-data class CurrentUiModel(
+data class CurrentWeatherUiModel(
     val lastUpdate: String,
     val tempC: Double,
     val feelsLike: Double,
