@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class GetWeatherDetailsUseCase @Inject constructor(val repository: GetWeatherDetailsRepository) {
     suspend operator fun invoke(
-        latitudeAndLongitude: String,
+        latitudeAndLongitude: String?,
         days: Int,
         hour: Int
     ): ApiResultStatus<GetWeatherDetailsDomainResponse> {

@@ -5,7 +5,7 @@ import com.example.weatherapp.home.domain.model.GetWeatherDetailsDomainResponse
 
 interface GetWeatherDetailsRepository {
     suspend fun getWeatherDetails(
-        latitudeAndLongitude: String,
+        latitudeAndLongitude: String?,
         days: Int,
         hour: Int
     ): ApiResultStatus<GetWeatherDetailsDomainResponse>
