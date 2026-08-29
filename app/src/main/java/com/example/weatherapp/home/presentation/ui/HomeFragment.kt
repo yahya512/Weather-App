@@ -1,6 +1,7 @@
 package com.example.weatherapp.home.presentation.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,6 +48,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //Send Latitude and Longitude
+        Log.d("HomeUi", "${args.Latitude}, ${args.Longitude}")
         viewModel.setLatitudeAndLongitude(args.Latitude, args.Longitude)
         //Load Weather Details
         viewModel.loadWeatherDetails()

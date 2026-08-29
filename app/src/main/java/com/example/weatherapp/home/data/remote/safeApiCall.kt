@@ -2,7 +2,6 @@ package com.example.weatherapp.home.data.remote
 
 import com.example.weatherapp.home.data.model.GetWeatherDetailsDtoResponse
 import com.example.weatherapp.home.domain.model.ApiResultStatus
-import com.example.weatherapp.search.data.model.SearchResultDto
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -17,11 +16,11 @@ suspend fun <T> safeApiCall(apiCall: suspend () -> T): ApiResultStatus<T> {
                 }
             }
 
-            is SearchResultDto -> {
-                if (result.error?.message == null) {
+            is List<*> -> {
+                if (result.isNotEmpty()) {
                     ApiResultStatus.Success(result)
                 } else {
-                    ApiResultStatus.Error(result.error.message)
+                    ApiResultStatus.Error("There is No Result")
                 }
             }
 

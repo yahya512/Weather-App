@@ -93,7 +93,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="@string/countryName"
+                android:text="@string/cityName"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@id/locationId_imageView"
@@ -162,7 +162,6 @@
                 app:layout_constraintTop_toBottomOf="@id/weatherStatus_imageView" />
 
             <TextView
-
                 android:id="@+id/degree_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -171,7 +170,7 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:text="@string/signDegree"
                 android:textColor="@color/white"
-                app:layout_constraintStart_toEndOf="@id/weatherCondition_textView"
+                app:layout_constraintStart_toEndOf="@id/tempC_textView"
                 app:layout_constraintTop_toBottomOf="@id/weatherCondition_textView" />
 
             <TextView
