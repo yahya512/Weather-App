@@ -13,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.weatherapp.R
+import com.example.weatherapp.core.dateFormate
 import com.example.weatherapp.core.handleImageUrl
 import com.example.weatherapp.databinding.FragmentHomeBinding
 import com.example.weatherapp.home.presentation.adapter.ForecastRecyclerView
@@ -22,9 +23,6 @@ import com.example.weatherapp.home.presentation.model.HomeUiState
 import com.example.weatherapp.home.presentation.viewmodel.WeatherDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -123,15 +121,6 @@ class HomeFragment : Fragment() {
         }
 
     }
-
-    private fun dateFormate(unFormattedDateTime: String): String {
-        val date = LocalDateTime.parse(
-            unFormattedDateTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
-        )
-        val formattedDateTime = date.format(DateTimeFormatter.ofPattern("EEE dd", Locale.ENGLISH))
-        return formattedDateTime
-    }
-
     private fun setUpListener() {
         //swip to refresh content
         binding.apply {
