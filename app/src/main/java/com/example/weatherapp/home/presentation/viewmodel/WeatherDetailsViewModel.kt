@@ -21,12 +21,14 @@ class WeatherDetailsViewModel @Inject constructor(
 
     private var latitude: Float = 0.0f
     private var longitude: Float = 0.0f
+    private val days = 7
+    private val hours = 16
 
     fun loadWeatherDetails() {
         viewModelScope.launch {
             _stateFlowWeatherDetails.emit(HomeUiState.Loading)
 
-            when (val result = getWeatherDetails("$latitude,$longitude", 7, 16)) {
+            when (val result = getWeatherDetails("$latitude,$longitude", days, hours)) {
                 is ApiResultStatus.Success -> {
                     val getWeatherDetailsUiResponse = GetWeatherDetailsUiMapper.mapToUi(result.data)
                     _stateFlowWeatherDetails.emit(HomeUiState.Success(getWeatherDetailsUiResponse))
