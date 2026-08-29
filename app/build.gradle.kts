@@ -71,4 +71,9 @@ dependencies {
     //Chucker
     debugImplementation(libs.library)
     releaseImplementation(libs.chucker.library.no.op)
+    //lottiefiles for animaiton
+    implementation(libs.lottie)
+    //fused location provider client
+    implementation(libs.play.services.location)
+
 }
