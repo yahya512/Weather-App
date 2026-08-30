@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#301D5C"
+    android:background="@color/search_backGround"
     tools:context=".search.presentation.ui.SearchFragment">
 
     <TextView
@@ -85,15 +85,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <!--    <androidx.constraintlayout.widget.Group-->
-    <!--        android:id="@+id/successState_group"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        app:constraint_referenced_ids="-->
-    <!--        Location_textView,-->
-    <!--        searchResult_recyclerView,-->
-    <!--        searchIcon_ImageView" />-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
