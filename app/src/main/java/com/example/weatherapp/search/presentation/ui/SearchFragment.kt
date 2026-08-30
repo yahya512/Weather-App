@@ -63,7 +63,7 @@ class SearchFragment : Fragment(), OnClickItem {
 
                         is SearchUiState.Error -> {
                             binding.apply {
-                                searchEditText.isVisible = false
+                                searchEditText.isVisible = true
                                 searchResultRecyclerView.isVisible = false
                                 progressBar.isVisible = false
                                 errorMessageTextView.isVisible = true
