@@ -7,7 +7,7 @@
     tools:background="@drawable/days_weather_shape">
 
     <TextView
-        android:id="@+id/text_dayOfWeek"
+        android:id="@+id/dayOfWeek_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/image_cloudIcon"
+        android:id="@+id/cloudIcon_imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -32,10 +32,10 @@
         android:src="@drawable/cloud_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_dayOfWeek" />
+        app:layout_constraintTop_toBottomOf="@+id/dayOfWeek_textView" />
 
     <TextView
-        android:id="@+id/text_degreeDayNumber"
+        android:id="@+id/degreeDayNumber_textView"
         style="@style/weatherTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,20 +46,20 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_cloudIcon" />
+        app:layout_constraintTop_toBottomOf="@id/cloudIcon_imageView" />
 
     <TextView
-        android:id="@+id/text_signDegree"
+        android:id="@+id/signDegree_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/signDegree"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@id/text_degreeDayNumber"
-        app:layout_constraintTop_toBottomOf="@id/image_cloudIcon" />
+        app:layout_constraintStart_toEndOf="@id/degreeDayNumber_textView"
+        app:layout_constraintTop_toBottomOf="@id/cloudIcon_imageView" />
 
     <TextView
-        android:id="@+id/text_maxWindKph"
+        android:id="@+id/maxWindKph_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -72,7 +72,7 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_degreeDayNumber"
+        app:layout_constraintTop_toBottomOf="@id/degreeDayNumber_textView"
         tools:ignore="SmallSp" />
 
     <TextView
@@ -84,6 +84,6 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_maxWindKph"
+        app:layout_constraintTop_toBottomOf="@id/maxWindKph_textView"
         tools:ignore="SmallSp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

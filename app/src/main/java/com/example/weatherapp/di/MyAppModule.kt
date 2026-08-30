@@ -10,6 +10,8 @@ import com.example.weatherapp.home.data.remote.GetWeatherDetailsApi
 import com.example.weatherapp.home.data.repository.GetWeatherRepositoryImpl
 import com.example.weatherapp.home.domain.repository.GetWeatherDetailsRepository
 import com.example.weatherapp.home.domain.usecase.GetWeatherDetailsUseCase
+import com.example.weatherapp.search.data.remote.SearchResultApi
+import com.example.weatherapp.search.data.repository.SearchRepositoryImpl
 import com.example.weatherapp.search.domain.repository.SearchRepository
 import com.example.weatherapp.search.domain.usecase.SearchByCityUseCase
 import dagger.Module
@@ -122,4 +124,17 @@ object MyAppModule {
     fun provideRepositoryForSearchUseCase(repository: SearchRepository): SearchByCityUseCase {
         return SearchByCityUseCase(repository)
     }
+
+    // Create Instance for Search Api
+    @Provides
+    fun provideInstanceForSearchApi(retrofit: Retrofit): SearchResultApi {
+        return retrofit.create(SearchResultApi::class.java)
+    }
+
+    //Provide Api Service to Repo Impl
+    @Provides
+    fun provideApiServiceForSearchRepoImpl(apiService: SearchResultApi): SearchRepository {
+        return SearchRepositoryImpl(apiService)
+    }
+
 }

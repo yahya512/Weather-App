@@ -17,15 +17,8 @@ class GetWeatherRepositoryImpl @Inject constructor(
     override suspend fun getWeatherDetails(
         latitudeAndLongitude: String?, days: Int, hour: Int
     ): ApiResultStatus<GetWeatherDetailsDomainResponse> {
-        var localLocation: String?
-        if (latitudeAndLongitude == null) {
-            localLocation =
-                "${sharedPreferences.getLatitude()}," + "${sharedPreferences.getLongitude()}"
-
-        } else {
-            localLocation = latitudeAndLongitude
-        }
-
+        val localLocation = latitudeAndLongitude
+            ?: ("${sharedPreferences.getLatitude()}," + "${sharedPreferences.getLongitude()}")
         val response =
             safeApiCall { apiResponse.getWeatherDetails(localLocation, days, hour) }
         return when (response) {
