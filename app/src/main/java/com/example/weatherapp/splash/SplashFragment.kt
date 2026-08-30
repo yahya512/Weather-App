@@ -26,8 +26,9 @@ class SplashFragment : Fragment() {
     private val fusedLocationClient by lazy {
         LocationServices.getFusedLocationProviderClient(requireContext())
     }
+
     @Inject
-     lateinit var sharedPreferences : LocationLocalDataSource
+    lateinit var sharedPreferences: LocationLocalDataSource
 
 
     override fun onCreateView(
@@ -84,9 +85,10 @@ class SplashFragment : Fragment() {
             if (location != null) {
                 val latitude = location.latitude.toFloat()
                 val longitude = location.longitude.toFloat()
-                sharedPreferences.saveLocation(latitude, longitude)
+                 sharedPreferences.saveLocation(latitude, longitude)
                 navigateToHome(latitude, longitude)
             } else {
+
                 navigateToSearch()
             }
         }
