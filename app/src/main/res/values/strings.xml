@@ -3,4 +3,27 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_blank_fragment">Search blank fragment</string>
+    <string name="countryName">Paris</string>
+    <string name="date_OfDay">June 07</string>
+    <string name="updated_Date">Updated as of</string>
+    <string name="text_dateTime">6/7/2023 12:25 PM</string>
+    <string name="conditionText">Clear</string>
+    <string name="temp_C">24</string>
+    <string name="signDegree">&#xb0;</string>
+    <string name="signCelsius">C</string>
+    <string name="humidityPercentage">56%</string>
+    <string name="humidity">HUMIDITY</string>
+    <string name="text_wind">WIND</string>
+    <string name="text_FeelsLike">FEELS LIKE</string>
+    <string name="dayOfWeek">Wed 16</string>
+    <string name="text_feelsLikeNumber">22</string>
+    <string name="text_dayDegree">22</string>
+    <string name="text_dayWind">18</string>
+    <string name="km_h">Km/H</string>
+    <string name="errorMessage">errorMessage</string>
+    <string name="percentageHumidityUi">%1$s%%</string>
+    <string name="speedOfWindUi">%1$skm/h</string>
+    <string name="home_navBar">Home</string>
+    <string name="search_navBar">Search</string>
+    <string name="setting_navBar">Settings</string>
 </resources>
