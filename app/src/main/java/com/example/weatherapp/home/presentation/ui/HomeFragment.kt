@@ -1,7 +1,6 @@
 package com.example.weatherapp.home.presentation.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.weatherapp.R
+import com.example.weatherapp.core.LocationLocalDataSource
 import com.example.weatherapp.core.dateFormate
 import com.example.weatherapp.core.handleImageUrl
 import com.example.weatherapp.databinding.FragmentHomeBinding
@@ -24,6 +24,7 @@ import com.example.weatherapp.home.presentation.model.HomeUiState
 import com.example.weatherapp.home.presentation.viewmodel.WeatherDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -38,6 +39,9 @@ class HomeFragment : Fragment() {
         ForecastRecyclerView()
     }
 
+    @Inject
+    lateinit var sharedPreferences: LocationLocalDataSource
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -48,8 +52,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //Send Latitude and Longitude
-        Log.d("HomeUi", "${args.Latitude}, ${args.Longitude}")
-        viewModel.setLatitudeAndLongitude(args.Latitude, args.Longitude)
+        if (args.Latitude == 0.0f && args.Longitude == 0.0f) {
+            viewModel.setLatitudeAndLongitude(
+                sharedPreferences.getLatitude(),
+                sharedPreferences.getLongitude()
+            )
+        } else {
+            viewModel.setLatitudeAndLongitude(args.Latitude, args.Longitude)
+        }
         //Load Weather Details
         viewModel.loadWeatherDetails()
         //set up listeners
@@ -123,6 +133,7 @@ class HomeFragment : Fragment() {
         }
 
     }
+
     private fun setUpListener() {
         //swip to refresh content
         binding.apply {

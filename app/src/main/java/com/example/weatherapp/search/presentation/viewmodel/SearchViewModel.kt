@@ -1,6 +1,5 @@
 package com.example.weatherapp.search.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.home.domain.model.ApiResultStatus
@@ -44,7 +43,7 @@ class SearchViewModel @Inject constructor(
             }
 
             is ApiResultStatus.Error -> {
-                Log.d("error", "message in view model ${result.errorMessage}")
+
                 _searchStateFlow.emit(SearchUiState.Error(result.errorMessage))
             }
         }
@@ -52,7 +51,7 @@ class SearchViewModel @Inject constructor(
 
 
     fun setCityName(cityName: String) {
-        Log.d("searchViewModel", "cityName : $cityName")
+
         this._cityName.value = cityName
     }
 
@@ -60,7 +59,6 @@ class SearchViewModel @Inject constructor(
 
     @OptIn(FlowPreview::class)
     private fun observeSearchQuery() {
-        Log.d("search", "viewModel search query ,cityName ${_cityName.value}")
         viewModelScope.launch {
             _cityName.debounce(500.milliseconds).distinctUntilChanged().filter { it.isNotBlank() }
                 .collectLatest { query ->

@@ -1,7 +1,6 @@
 package com.example.weatherapp.core
 
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.core.content.edit
 import javax.inject.Inject
 
@@ -16,7 +15,6 @@ class LocationLocalDataSource @Inject constructor(
     }
 
     fun saveLocation(latitude: Float, longitude: Float) {
-        Log.d("sharedPref :", "$latitude,$longitude")
         sharedPreferences.edit {
             putFloat(KEY_LATITUDE, latitude).putFloat(KEY_LONGITUDE, longitude)
         }

@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -86,11 +85,10 @@ class SplashFragment : Fragment() {
             if (location != null) {
                 val latitude = location.latitude.toFloat()
                 val longitude = location.longitude.toFloat()
-                Log.d("splash", "ui ,saved lat: $latitude ,saved long $longitude")
-                sharedPreferences.saveLocation(latitude, longitude)
+                 sharedPreferences.saveLocation(latitude, longitude)
                 navigateToHome(latitude, longitude)
             } else {
-                Log.d("splash", "navigate to search")
+
                 navigateToSearch()
             }
         }
@@ -111,8 +109,6 @@ class SplashFragment : Fragment() {
     }
 
     private fun navigateToSearch() {
-//        sharedPreferences.getLatitude()
-//        sharedPreferences.getLongitude()
         val action = SplashFragmentDirections.actionSplashFragmentToSearchFragment()
         findNavController().navigate(action)
     }

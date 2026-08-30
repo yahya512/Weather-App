@@ -1,6 +1,5 @@
 package com.example.weatherapp.home.data.repository
 
-import android.util.Log
 import com.example.weatherapp.core.LocationLocalDataSource
 import com.example.weatherapp.home.data.mappers.GetWeatherResponseDomainMapper
 import com.example.weatherapp.home.data.remote.GetWeatherDetailsApi
@@ -18,11 +17,8 @@ class GetWeatherRepositoryImpl @Inject constructor(
     override suspend fun getWeatherDetails(
         latitudeAndLongitude: String?, days: Int, hour: Int
     ): ApiResultStatus<GetWeatherDetailsDomainResponse> {
-        Log.d("HomeRepo", "lat and long :$latitudeAndLongitude")
         val localLocation = latitudeAndLongitude
             ?: ("${sharedPreferences.getLatitude()}," + "${sharedPreferences.getLongitude()}")
-        Log.d("HomeRepo", "saved lat and long from  pref : $localLocation")
-
         val response =
             safeApiCall { apiResponse.getWeatherDetails(localLocation, days, hour) }
         return when (response) {

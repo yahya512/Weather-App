@@ -1,7 +1,6 @@
 package com.example.weatherapp.search.presentation.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,15 +47,10 @@ class SearchFragment : Fragment(), OnClickItem {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        Log.d(
-//            "search",
-//            "location :${sharedPreferences.getLatitude()},${sharedPreferences.getLongitude()}"
-//        )
         setUpListener()
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.searchState.collect { state ->
-                    Log.d("search", "state : $state")
                     when (state) {
                         SearchUiState.Idle -> {
                             binding.apply {
@@ -73,7 +67,6 @@ class SearchFragment : Fragment(), OnClickItem {
                                 searchResultRecyclerView.isVisible = false
                                 progressBar.isVisible = false
                                 errorMessageTextView.isVisible = true
-                                Log.d("error", "message: ${state.errorMessage}")
                                 errorMessageTextView.text = state.errorMessage
                             }
                         }
@@ -157,7 +150,6 @@ class SearchFragment : Fragment(), OnClickItem {
 
 
     override fun onClick(item: SearchResultUiModel) {
-        Log.d("search", "ui ,saved lat:${item.latitude} ,saved long ${item.longitude}")
         // saved location
         sharedPreferences.saveLocation(item.latitude, item.longitude)
         val action = SearchFragmentDirections.actionSearchFragmentToHomeFragment(
