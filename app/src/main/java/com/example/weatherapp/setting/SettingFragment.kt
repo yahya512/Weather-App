@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.setting
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.fragment.app.Fragment
+import com.example.weatherapp.MainActivity
 import com.example.weatherapp.core.ARABIC
 import com.example.weatherapp.core.AppSharedPreferences
 import com.example.weatherapp.core.ENGLISH
@@ -15,11 +16,8 @@ import com.example.weatherapp.databinding.FragmentSettingsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class SettingFragment : Fragment() {
-
-
     private var _binding: FragmentSettingsBinding? = null
     private val binding
         get() = _binding!!

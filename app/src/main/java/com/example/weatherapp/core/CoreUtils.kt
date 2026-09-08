@@ -40,7 +40,6 @@ fun dateFormate(unformattedDate: String): String {
     }
 }
 
-// we stop here
 fun changeLang(language: String) {
     if (language == ARABIC) {
         AppCompatDelegate.setApplicationLocales(
