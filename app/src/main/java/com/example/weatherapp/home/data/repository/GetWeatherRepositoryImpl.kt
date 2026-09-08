@@ -1,6 +1,6 @@
 package com.example.weatherapp.home.data.repository
 
-import com.example.weatherapp.core.LocationLocalDataSource
+import com.example.weatherapp.core.AppSharedPreferences
 import com.example.weatherapp.home.data.mappers.GetWeatherResponseDomainMapper
 import com.example.weatherapp.home.data.remote.GetWeatherDetailsApi
 import com.example.weatherapp.home.data.remote.safeApiCall
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class GetWeatherRepositoryImpl @Inject constructor(
     val apiResponse: GetWeatherDetailsApi,
-    val sharedPreferences: LocationLocalDataSource
+    val sharedPreferences: AppSharedPreferences
 ) :
     GetWeatherDetailsRepository {
     override suspend fun getWeatherDetails(

@@ -4,7 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.weatherapp.BuildConfig
-import com.example.weatherapp.core.LocationLocalDataSource
+import com.example.weatherapp.core.AppSharedPreferences
+import com.example.weatherapp.core.ENGLISH
 import com.example.weatherapp.home.data.remote.API_KEY
 import com.example.weatherapp.home.data.remote.GetWeatherDetailsApi
 import com.example.weatherapp.home.data.repository.GetWeatherRepositoryImpl
@@ -53,6 +54,7 @@ object MyAppModule {
     fun provideOkHttpClient(
         logging: HttpLoggingInterceptor,
         chuker: ChuckerInterceptor,
+        sharedPreferences: AppSharedPreferences
     ): OkHttpClient {
         val client =
             OkHttpClient.Builder()
@@ -62,6 +64,7 @@ object MyAppModule {
                     val key = chain.request()
                         .newBuilder()
                         .addHeader("key", API_KEY)
+                        .addHeader("lang", sharedPreferences.getLanguage() ?: ENGLISH)
                         .build()
                     chain.proceed(key)
                 }
@@ -101,15 +104,15 @@ object MyAppModule {
     @Provides
     fun provideGetWeatherDetailsApiForGetWeatherRepositoryImpl(
         apiService: GetWeatherDetailsApi,
-        sharedPreference: LocationLocalDataSource
+        sharedPreference: AppSharedPreferences
     ): GetWeatherDetailsRepository {
         return GetWeatherRepositoryImpl(apiService, sharedPreference)
     }
 
     //provide SharedPreferences
     @Provides
-    fun provideLocationLocalDataSource(sharedPreference: SharedPreferences): LocationLocalDataSource {
-        return LocationLocalDataSource(sharedPreference)
+    fun provideLocationLocalDataSource(sharedPreference: SharedPreferences): AppSharedPreferences {
+        return AppSharedPreferences(sharedPreference)
     }
 
     @Provides

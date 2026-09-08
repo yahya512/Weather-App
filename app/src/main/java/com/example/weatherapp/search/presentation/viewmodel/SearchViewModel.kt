@@ -43,12 +43,10 @@ class SearchViewModel @Inject constructor(
             }
 
             is ApiResultStatus.Error -> {
-
                 _searchStateFlow.emit(SearchUiState.Error(result.errorMessage))
             }
         }
     }
-
 
     fun setCityName(cityName: String) {
 

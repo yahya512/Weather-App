@@ -1,11 +1,16 @@
 package com.example.weatherapp.core
 
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 import java.util.Locale
 
+
+const val ARABIC = "ar"
+const val ENGLISH = "en"
 fun String.handleImageUrl(): String {
     return if (this.startsWith("//")) "https:$this" else this
 }
@@ -32,5 +37,18 @@ fun dateFormate(unformattedDate: String): String {
         )
 
         date.format(outputFormatter)
+    }
+}
+
+// we stop here
+fun changeLang(language: String) {
+    if (language == ARABIC) {
+        AppCompatDelegate.setApplicationLocales(
+            LocaleListCompat.forLanguageTags(ARABIC)
+        )
+    } else {
+        AppCompatDelegate.setApplicationLocales(
+            LocaleListCompat.forLanguageTags(ENGLISH)
+        )
     }
 }

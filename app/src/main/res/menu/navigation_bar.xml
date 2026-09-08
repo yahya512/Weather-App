@@ -4,6 +4,7 @@
 
     <item
         android:id="@+id/homeFragment"
+        android:checked="true"
         android:icon="@drawable/home_icon"
         android:title="@string/home_navBar" />
     <item
@@ -11,7 +12,7 @@
         android:icon="@drawable/search_icon"
         android:title="@string/search_navBar" />
     <item
-        android:id="@+id/setting_navbar"
+        android:id="@+id/settingFragment"
         android:icon="@drawable/settings_icon"
         android:title="@string/setting_navBar" />
 </menu>

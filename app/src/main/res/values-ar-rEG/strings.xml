@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تطبيق الطقس</string>
+    <string name="hello_blank_fragment">مرحبًا من الصفحة الفارغة</string>
+    <string name="search_blank_fragment">البحث</string>
+    <string name="cityName">باريس</string>
+    <string name="date_OfDay">07 يونيو</string>
+    <string name="updated_Date">تم التحديث في</string>
+    <string name="text_dateTime">7/6/2023 12:25 م</string>
+    <string name="conditionText">صافي</string>
+    <string name="temp_C">24</string>
+    <string name="signDegree">&#xb0;</string>
+    <string name="signCelsius">م</string>
+    <string name="humidityPercentage">56%</string>
+    <string name="humidity">الرطوبة</string>
+    <string name="text_wind">الرياح</string>
+    <string name="text_FeelsLike">يشعر كأنه</string>
+    <string name="dayOfWeek">الأربعاء 16</string>
+    <string name="text_feelsLikeNumber">22</string>
+    <string name="text_dayDegree">22</string>
+    <string name="text_dayWind">18</string>
+    <string name="km_h">كم/س</string>
+    <string name="errorMessage">حدث خطأ</string>
+    <string name="percentageHumidityUi">%1$s%%</string>
+    <string name="speedOfWindUi">%1$sكم/س</string>
+    <string name="home_navBar">الرئيسية</string>
+    <string name="search_navBar">البحث</string>
+    <string name="setting_navBar">الإعدادات</string>
+    <string name="locations">المواقع</string>
+    <string name="countryName">فرنسا</string>
+    <string name="regionName">إيل دو فرانس</string>
+    <string name="enter_your_city">أدخل اسم مدينتك</string>
+    <string name="settings">الإعدادات</string>
+    <string name="applyButtonText">تفعيل</string>
+    <string-array name="languages">
+        <item>الإنجليزية</item>
+        <item>العربية</item>
+    </string-array>
+</resources>
