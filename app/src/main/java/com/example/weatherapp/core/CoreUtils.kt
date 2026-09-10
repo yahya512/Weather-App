@@ -11,6 +11,8 @@ import java.util.Locale
 
 const val ARABIC = "ar"
 const val ENGLISH = "en"
+const val ENGLISH_POSITION = 0
+const val ARABIC_POSITION = 1
 fun String.handleImageUrl(): String {
     return if (this.startsWith("//")) "https:$this" else this
 }

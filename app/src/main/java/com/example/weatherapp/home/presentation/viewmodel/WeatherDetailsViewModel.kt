@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.home.domain.model.ApiResultStatus
 import com.example.weatherapp.home.domain.usecase.GetWeatherDetailsUseCase
 import com.example.weatherapp.home.presentation.mappers.GetWeatherDetailsUiMapper
-import com.example.weatherapp.home.presentation.model.BackGroundModel
+import com.example.weatherapp.home.presentation.model.BackgroundModel
 import com.example.weatherapp.home.presentation.model.HomeUiState
 import com.example.weatherapp.home.presentation.model.LocalBackGroundRes
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -48,10 +48,10 @@ class WeatherDetailsViewModel @Inject constructor(
         this.longitude = longitude
     }
 
-    fun selectBackGround(name: String): BackGroundModel {
-        val c = LocalBackGroundRes.background.find {
+    fun selectBackGround(name: String): BackgroundModel {
+        val homeBackground = LocalBackGroundRes.background.find {
             it.country == name
         }
-        return c ?: LocalBackGroundRes.background[0]
+        return homeBackground ?: LocalBackGroundRes.background[0]
     }
 }

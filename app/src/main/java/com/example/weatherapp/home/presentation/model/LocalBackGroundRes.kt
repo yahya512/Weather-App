@@ -4,14 +4,14 @@ import com.example.weatherapp.R
 
 object LocalBackGroundRes {
     val background = listOf(
-        BackGroundModel("Paris", R.drawable.eiffel_tower),
-        BackGroundModel("London", R.drawable.london_city),
-        BackGroundModel("Barcelona", R.drawable.barcelona_city),
-        BackGroundModel("Beijing", R.drawable.beijing_city),
-        BackGroundModel("Bangkok", R.drawable.bangkok_city),
-        BackGroundModel("Dubai", R.drawable.dubai_city),
-        BackGroundModel("Minsk", R.drawable.minsk_city),
-        BackGroundModel("New York", R.drawable.new_york_city),
-        BackGroundModel("Rome", R.drawable.rome_city),
+        BackgroundModel("Paris", R.drawable.eiffel_tower),
+        BackgroundModel("London", R.drawable.london_city),
+        BackgroundModel("Barcelona", R.drawable.barcelona_city),
+        BackgroundModel("Beijing", R.drawable.beijing_city),
+        BackgroundModel("Bangkok", R.drawable.bangkok_city),
+        BackgroundModel("Dubai", R.drawable.dubai_city),
+        BackgroundModel("Minsk", R.drawable.minsk_city),
+        BackgroundModel("New York", R.drawable.new_york_city),
+        BackgroundModel("Rome", R.drawable.rome_city),
     )
 }

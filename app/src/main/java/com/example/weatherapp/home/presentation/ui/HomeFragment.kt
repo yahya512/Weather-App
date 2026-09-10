@@ -18,7 +18,7 @@ import com.example.weatherapp.core.dateFormate
 import com.example.weatherapp.core.handleImageUrl
 import com.example.weatherapp.databinding.FragmentHomeBinding
 import com.example.weatherapp.home.presentation.adapter.ForecastRecyclerView
-import com.example.weatherapp.home.presentation.model.BackGroundModel
+import com.example.weatherapp.home.presentation.model.BackgroundModel
 import com.example.weatherapp.home.presentation.model.ForecastDayUiModel
 import com.example.weatherapp.home.presentation.model.GetWeatherDetailsUiResponse
 import com.example.weatherapp.home.presentation.model.HomeUiState
@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel: WeatherDetailsViewModel by viewModels()
     private val args: HomeFragmentArgs by navArgs()
-    private lateinit var background: BackGroundModel
+    private lateinit var background: BackgroundModel
     private val adapter by lazy {
         ForecastRecyclerView()
     }

@@ -1,6 +1,6 @@
 package com.example.weatherapp.home.presentation.model
 
-data class BackGroundModel(
+data class BackgroundModel(
     val country: String,
     val backgroundResId: Int
 )

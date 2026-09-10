@@ -9,8 +9,10 @@ import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import com.example.weatherapp.MainActivity
 import com.example.weatherapp.core.ARABIC
+import com.example.weatherapp.core.ARABIC_POSITION
 import com.example.weatherapp.core.AppSharedPreferences
 import com.example.weatherapp.core.ENGLISH
+import com.example.weatherapp.core.ENGLISH_POSITION
 import com.example.weatherapp.core.changeLang
 import com.example.weatherapp.databinding.FragmentSettingsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,10 +45,10 @@ class SettingFragment : Fragment() {
     private fun setUpSpinner() {
         val savedLang = sharedPreferences.getLanguage()
         val position = when (savedLang) {
-            ENGLISH -> 0
-            ARABIC -> 1
+            ENGLISH -> ENGLISH_POSITION
+            ARABIC -> ARABIC_POSITION
             else -> {
-                0
+                ENGLISH_POSITION
             }
         }
         binding.languageSpinner.setSelection(position)
