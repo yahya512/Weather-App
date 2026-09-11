@@ -11,7 +11,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.weatherapp.core.LocationLocalDataSource
+import com.example.weatherapp.R
+import com.example.weatherapp.core.AppSharedPreferences
 import com.example.weatherapp.databinding.FragmentSplashBinding
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
@@ -28,7 +29,7 @@ class SplashFragment : Fragment() {
     }
 
     @Inject
-    lateinit var sharedPreferences: LocationLocalDataSource
+    lateinit var sharedPreferences: AppSharedPreferences
 
 
     override fun onCreateView(
@@ -85,10 +86,9 @@ class SplashFragment : Fragment() {
             if (location != null) {
                 val latitude = location.latitude.toFloat()
                 val longitude = location.longitude.toFloat()
-                 sharedPreferences.saveLocation(latitude, longitude)
+                sharedPreferences.saveLocation(latitude, longitude)
                 navigateToHome(latitude, longitude)
             } else {
-
                 navigateToSearch()
             }
         }
@@ -103,12 +103,17 @@ class SplashFragment : Fragment() {
     }
 
     private fun navigateToHome(latitude: Float, longitude: Float) {
+        // if the splash is not attached => return
+        if (!isAdded) return
+        if (findNavController().currentDestination?.id != R.id.splashFragment) return
         val action =
             SplashFragmentDirections.actionSplashFragmentToHomeFragment(latitude, longitude)
         findNavController().navigate(action)
     }
 
     private fun navigateToSearch() {
+        if (!isAdded) return
+        if (findNavController().currentDestination?.id != R.id.splashFragment) return
         val action = SplashFragmentDirections.actionSplashFragmentToSearchFragment()
         findNavController().navigate(action)
     }

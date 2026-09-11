@@ -13,7 +13,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.example.weatherapp.core.LocationLocalDataSource
+import com.example.weatherapp.core.AppSharedPreferences
 import com.example.weatherapp.databinding.FragmentSearchBinding
 import com.example.weatherapp.search.presentation.adapter.OnClickItem
 import com.example.weatherapp.search.presentation.adapter.SearchRecyclerView
@@ -36,7 +36,7 @@ class SearchFragment : Fragment(), OnClickItem {
     private val viewModel: SearchViewModel by viewModels()
 
     @Inject
-    lateinit var sharedPreferences: LocationLocalDataSource
+    lateinit var sharedPreferences: AppSharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

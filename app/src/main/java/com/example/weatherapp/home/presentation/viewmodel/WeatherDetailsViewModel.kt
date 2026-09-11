@@ -5,7 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.home.domain.model.ApiResultStatus
 import com.example.weatherapp.home.domain.usecase.GetWeatherDetailsUseCase
 import com.example.weatherapp.home.presentation.mappers.GetWeatherDetailsUiMapper
+import com.example.weatherapp.home.presentation.model.BackgroundModel
 import com.example.weatherapp.home.presentation.model.HomeUiState
+import com.example.weatherapp.home.presentation.model.LocalBackGroundRes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -44,5 +46,12 @@ class WeatherDetailsViewModel @Inject constructor(
     fun setLatitudeAndLongitude(latitude: Float, longitude: Float) {
         this.latitude = latitude
         this.longitude = longitude
+    }
+
+    fun selectBackGround(name: String): BackgroundModel {
+        val homeBackground = LocalBackGroundRes.background.find {
+            it.country == name
+        }
+        return homeBackground ?: LocalBackGroundRes.background[0]
     }
 }

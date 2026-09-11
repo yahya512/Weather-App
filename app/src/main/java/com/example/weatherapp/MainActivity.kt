@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.setting_navbar -> {
+                R.id.settingFragment -> {
+                    navController.navigate(R.id.settingFragment)
                     // SettingFragment
                     true
                 }
